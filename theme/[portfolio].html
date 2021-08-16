@@ -15,41 +15,59 @@
         max-width: 100%;
         vertical-align: middle;
         display: inline-block; }</style></head>
-<body>
-  <div>{{ texts.-498db5bf }}</div>
-  {%- assign objectivesOfPortfolio = f_objective | resolveMultiReferences -%}<div class="w-dyn-list">
-    {%- unless objectivesOfPortfolio.length == 0 -%}<div role="list" class="w-dyn-items">
-      {%- for item in objectivesOfPortfolio -%}<div role="listitem" class="w-dyn-item">
-        <div>{{ item.data.title }}</div>
-      </div>{%- endfor -%}
-    </div>{%- endunless -%}
-    {%- if objectivesOfPortfolio.length == 0 -%}<div class="w-dyn-empty">
-      <div>{{ texts.3d503d2b }}</div>
-    </div>{%- endif -%}
+<body class="body">
+  <div class="section wf-section">
+    <div class="container w-container">
+      <div class="div-block-131">
+        <div class="portfolio-div-1">
+          <div>{{ texts.-742210d8 }}</div>
+          <h1>{{ title }}</h1>
+        </div>
+        <div class="portfolio-div-1">
+          <div>{{ texts.5d03ee9a }}</div>
+          <h2>{{ f_client-name }}</h2>
+        </div>
+        <div class="portfolio-div-2">
+          <div>{{ texts.-3be6de79 }}</div>
+          {%- assign portfolio-categoriesOfPortfolio = f_category | resolveMultiReferences -%}<div class="collection-list-wrapper w-dyn-list">
+            {%- unless portfolio-categoriesOfPortfolio.length == 0 -%}<div role="list" class="collection-list w-dyn-items">
+              {%- for item in portfolio-categoriesOfPortfolio -%}<div role="listitem" class="collection-item w-dyn-item">
+                <div class="text-block-2">{{ item.data.title }}</div>
+              </div>{%- endfor -%}
+            </div>{%- endunless -%}
+            {%- if portfolio-categoriesOfPortfolio.length == 0 -%}<div class="w-dyn-empty">
+              <div>{{ texts.3d503d2b }}</div>
+            </div>{%- endif -%}
+          </div>
+        </div>
+        <div class="portfolio-div-2">
+          <div>{{ texts.-498db5bf }}</div>
+          {%- assign objectivesOfPortfolio = f_objective | resolveMultiReferences -%}<div class="collection-list-wrapper-2 w-dyn-list">
+            {%- unless objectivesOfPortfolio.length == 0 -%}<div role="list" class="collection-list-2 w-dyn-items">
+              {%- for item in objectivesOfPortfolio -%}<div role="listitem" class="collection-item-2 w-dyn-item">
+                <div class="text-block">{{ item.data.title }}</div>
+              </div>{%- endfor -%}
+            </div>{%- endunless -%}
+            {%- if objectivesOfPortfolio.length == 0 -%}<div class="w-dyn-empty">
+              <div>{{ texts.3d503d2b }}</div>
+            </div>{%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>{{ texts.-3be6de79 }}</div>
-  {%- assign portfolio-categoriesOfPortfolio = f_category | resolveMultiReferences -%}<div class="w-dyn-list">
-    {%- unless portfolio-categoriesOfPortfolio.length == 0 -%}<div role="list" class="w-dyn-items">
-      {%- for item in portfolio-categoriesOfPortfolio -%}<div role="listitem" class="w-dyn-item">
-        <div>{{ item.data.title }}</div>
-      </div>{%- endfor -%}
-    </div>{%- endunless -%}
-    {%- if portfolio-categoriesOfPortfolio.length == 0 -%}<div class="w-dyn-empty">
-      <div>{{ texts.3d503d2b }}</div>
-    </div>{%- endif -%}
+  <div class="wf-section">
+    <div class="w-container">
+      <div>{{ texts.-68b9b022 }}</div>
+      <div class="w-richtext">{{ content }}</div>
+    </div>
   </div>
-  <div>{{ texts.-742210d8 }}</div>
-  <h1>{{ title }}</h1>
-  <div>{{ texts.5d03ee9a }}</div>
-  <h2>{{ f_client-name }}</h2>
-  <div>{{ texts.-68b9b022 }}</div>
-  <div class="w-richtext">{{ content }}</div>
-  <div>{{ texts.5cee077a }}</div>{%- image f_client-logo.url, f_client-logo.alt, '[]', 'loading="lazy"' -%}
+  <div>{{ texts.5cee077a }}</div>{%- image f_client-logo.url, f_client-logo.alt, '[{"max":10000,"size":"100vw"}]', 'loading="lazy"' -%}
   <div>{{ texts.-2452d9d3 }}</div>
   {%- assign setItems = f_screenshots -%}<div class="w-dyn-list">
     {%- unless setItems.length == 0 -%}<div role="list" class="w-dyn-items">
       {%- for setItem in setItems -%}<div role="listitem" class="w-dyn-item">
-        <a href="{{ links.23 }}" class="w-inline-block w-lightbox">{%- image setItem.screenshots.url, setItem.screenshots.alt, '[]', 'loading="lazy"' -%}</a>
+        <a href="{{ links.23 }}" class="w-inline-block w-lightbox">{%- image setItem.screenshots.url, setItem.screenshots.alt, '[{"max":10000,"size":"100vw"}]', 'loading="lazy"' -%}</a>
       </div>{%- endfor -%}
     </div>{%- endunless -%}
     {%- if setItems.length == 0 -%}<div class="w-dyn-empty">

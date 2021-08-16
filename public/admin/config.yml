@@ -1,0 +1,1092 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+media_folder: theme/assets/images
+public_folder: /assets/images
+collections:
+  - name: pages
+    label: Pages
+    identifier_field: title
+    extension: md
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    folder: cms/pages
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '{{slug}}.html'
+      - &ref_0
+        label: Seo
+        name: seo
+        widget: object
+        collapsed: true
+        fields:
+          - label: Title
+            name: title
+            widget: string
+            required: false
+          - label: Description
+            name: description
+            widget: string
+            required: false
+          - label: No index
+            name: noindex
+            widget: boolean
+            default: false
+            required: false
+          - label: Open Graph Title
+            name: og:title
+            widget: string
+            required: false
+          - label: Open Graph Image
+            name: og:image
+            widget: image
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: Twitter Title
+            name: twitter:title
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Card
+            name: twitter:card
+            widget: string
+            default: summary
+            required: false
+          - label: Twitter Site
+            name: twitter:site
+            widget: string
+            required: false
+          - label: Twitter Creator
+            name: twitter:creator
+            widget: string
+            required: false
+          - label: Additional HTML tags
+            name: additional_tags
+            widget: text
+            required: false
+  - name: portfolio
+    label: Portfolios
+    folder: cms/portfolio
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Project name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Description
+        name: body
+        widget: markdown
+        required: false
+      - hint: ''
+        name: f_client-name
+        label: Client name
+        widget: string
+        required: false
+      - hint: ''
+        name: f_screenshots
+        label: Screenshots
+        widget: list
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_category
+        label: Category
+        widget: relation
+        required: false
+        collection: portfolio_categories
+        value_field: cms/portfolio-categories/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_client-logo
+        label: Client logo
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_objective
+        label: Objective
+        widget: relation
+        required: false
+        collection: objectives
+        value_field: cms/objectives/{{slug}}.md
+        search_fields:
+          - slug
+          - name
+        display_fields:
+          - title
+        multiple: true
+      - hint: ''
+        name: f_link
+        label: Link
+        widget: string
+        required: false
+      - hint: ''
+        name: f_order-priority
+        label: Order priority
+        widget: string
+        required: false
+      - hint: ''
+        name: f_featured
+        label: Featured
+        widget: boolean
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: portfolio
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[portfolio].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: portfolio_categories
+    label: Portfolio categories
+    folder: cms/portfolio-categories
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: f_description
+        label: Description
+        widget: text
+        required: false
+      - hint: ''
+        name: f_icon
+        label: Icon
+        widget: object
+        required: false
+        fields:
+          - hint: ''
+            name: url
+            label: Image
+            widget: image
+            required: false
+            allow_multiple: false
+          - hint: Image Alt
+            name: alt
+            label: alt
+            widget: string
+            required: false
+      - hint: ''
+        name: f_color
+        label: Color
+        widget: color
+        required: false
+        enableAlpha: true
+        allowInput: true
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: portfolio_categories
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[portfolio-categories].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - name: objectives
+    label: Objectives
+    folder: cms/objectives
+    create: true
+    identifier_field: name
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - hint: ''
+        name: title
+        label: Name
+        widget: string
+        required: true
+      - hint: ''
+        name: created-on
+        label: Created On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: updated-on
+        label: Updated On
+        widget: datetime
+        required: false
+      - hint: ''
+        name: published-on
+        label: Published On
+        widget: datetime
+        required: false
+      - label: Tags
+        widget: hidden
+        name: tags
+        default: objectives
+      - label: Layout
+        widget: hidden
+        name: layout
+        default: '[objectives].html'
+      - label: Publish Date
+        name: date
+        widget: datetime
+      - *ref_0
+  - label: Theme Settings
+    name: settings
+    identifier_field: title
+    extension: json
+    create: false
+    delete: false
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    files:
+      - label: General
+        name: site
+        file: cms/_data/settings/site.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: General
+          - hint: Full domain url (needed for a correct sitemap file)
+            name: domain
+            label: Domain
+            widget: string
+            required: false
+          - name: favicon
+            label: Favicon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: apple_touch_icon
+            label: Apple Touch Icon
+            widget: image
+            allow_multiple: false
+            required: false
+          - name: header_additional_content
+            label: Additional Content Header
+            hint: Content here will be placed before </head> tag
+            widget: text
+            required: false
+          - name: footer_additional_content
+            label: Additional Content Footer
+            hint: Content here will be placed before </body> tag
+            widget: text
+            required: false
+          - name: images_optimization
+            label: Images Optimization
+            widget: object
+            collapsed: false
+            fields:
+              - label: Image Formats
+                name: formats
+                widget: select
+                multiple: true
+                options:
+                  - label: Avif
+                    value: avif
+                  - label: Webp
+                    value: webp
+              - label: Image Dimensions
+                name: dimensions
+                widget: select
+                multiple: true
+                options:
+                  - label: '500'
+                    value: 500
+                  - label: '800'
+                    value: 800
+                  - label: '1080'
+                    value: 1080
+                  - label: '1600'
+                    value: 1600
+                  - label: '2000'
+                    value: 2000
+                  - label: '2600'
+                    value: 2600
+      - label: Colors
+        name: colors
+        file: cms/_data/colors.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Colors
+          - hint: 'Original color: #ffbf1f'
+            name: color_-10ac27c4
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #ebeef3'
+            name: color_-1297fed3
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #18335b'
+            name: color_-6dbb5649
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #aaa'
+            name: color_11613e
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #f3f3f5'
+            name: color_-1379be34
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #ff6700'
+            name: color_-10c0d8dc
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #fff'
+            name: color_1174a3
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #ccc'
+            name: color_116900
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: rgba(255, 103, 0, 0.75)'
+            name: color_6def587f
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #ebebeb'
+            name: color_-12980a06
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: rgba(236, 56, 114, 0.1)'
+            name: color_be91fb4
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #ec3872'
+            name: color_-12a1507f
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #3898ec'
+            name: color_-6a4ed23b
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: rgba(0, 0, 0, 0.1)'
+            name: color_-2c979a3a
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: rgba(0, 0, 0, 0.2)'
+            name: color_-2c979a1b
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #222'
+            name: color_10aaef
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: rgba(32, 206, 123, 0.1)'
+            name: color_-1a2683a9
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #20ce7b'
+            name: color_-6c60abf2
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #333'
+            name: color_10aed0
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+          - hint: 'Original color: #636363'
+            name: color_-657833a6
+            label: Color
+            widget: color
+            required: true
+            enableAlpha: true
+            allowInput: true
+      - label: Texts
+        name: texts
+        file: cms/_data/texts.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Texts
+          - hint: 'Original text: Typography, key: 5500514f'
+            label: Text
+            name: 5500514f
+            widget: string
+          - hint: >-
+              Original text: You'll see that these typography elements don't
+              have classes. That's because on this page, we want to edit the
+              styles after selecting "All H1 Headings" for example, so that it
+              will effect all the elements on the site. To do this, select the
+              H1 below, click where it says "Select a Class or Tag" and select
+              "All H1 Headings" at the bottom of the list., key: -1c35cfad
+            label: Text
+            name: '-1c35cfad'
+            widget: text
+          - hint: >-
+              Original text: If you edit styles here, they will change across
+              the site, key: 15301c6d
+            label: Text
+            name: 15301c6d
+            widget: string
+          - hint: 'Original text: H1, key: 8e9'
+            label: Text
+            name: '8e9'
+            widget: string
+          - hint: 'Original text: Lorem ipsum dolor sit amet, key: -734fd222'
+            label: Text
+            name: '-734fd222'
+            widget: string
+          - hint: 'Original text: H2, key: 8ea'
+            label: Text
+            name: 8ea
+            widget: string
+          - hint: 'Original text: H3, key: 8eb'
+            label: Text
+            name: 8eb
+            widget: string
+          - hint: 'Original text: H4, key: 8ec'
+            label: Text
+            name: 8ec
+            widget: string
+          - hint: 'Original text: H5, key: 8ed'
+            label: Text
+            name: 8ed
+            widget: string
+          - hint: 'Original text: H6, key: 8ee'
+            label: Text
+            name: 8ee
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse varius enim in eros elementum tristique. Duis
+              cursus, mi quis viverra ornare, eros dolor interdum nulla, ut
+              commodo diam libero vitae erat., key: -3910d286
+            label: Text
+            name: '-3910d286'
+            widget: text
+          - hint: 'Original text: Paragraph, key: -145e16b2'
+            label: Text
+            name: '-145e16b2'
+            widget: string
+          - hint: 'Original text: Paragraph small, key: -29e8204b'
+            label: Text
+            name: '-29e8204b'
+            widget: string
+          - hint: 'Original text: Paragraph Jumbo, key: -2c261523'
+            label: Text
+            name: '-2c261523'
+            widget: string
+          - hint: 'Original text: Block Quote, key: 3f3470e9'
+            label: Text
+            name: 3f3470e9
+            widget: string
+          - hint: 'Original text: Lorem ipsum, key: -1b542585'
+            label: Text
+            name: '-1b542585'
+            widget: string
+          - hint: 'Original text: Text Link, key: 3610230d'
+            label: Text
+            name: 3610230d
+            widget: string
+          - hint: 'Original text: Label, key: 45c8ed4'
+            label: Text
+            name: 45c8ed4
+            widget: string
+          - hint: 'Original text: View Project, key: 4132989e'
+            label: Text
+            name: 4132989e
+            widget: string
+          - hint: 'Original text: Button, key: 77471352'
+            label: Text
+            name: '77471352'
+            widget: string
+          - hint: 'Original text: Color, key: 3e43f43'
+            label: Text
+            name: 3e43f43
+            widget: string
+          - hint: >-
+              Original text: These colors have been created using Global
+              Swatches. If you edit the Global Swatch color, it will change
+              every element that uses that color swatch., key: -1e5986a2
+            label: Text
+            name: '-1e5986a2'
+            widget: text
+          - hint: 'Original text: Background Colors, key: 62f36ca2'
+            label: Text
+            name: 62f36ca2
+            widget: string
+          - hint: 'Original text: Bg color light Blue, key: 117cc87c'
+            label: Text
+            name: 117cc87c
+            widget: string
+          - hint: 'Original text: #ebeef3, key: -1297fed3'
+            label: Text
+            name: '-1297fed3'
+            widget: string
+          - hint: 'Original text: BG color Blue, key: -7a0c922e'
+            label: Text
+            name: '-7a0c922e'
+            widget: string
+          - hint: 'Original text: #18335b, key: -6dbb5649'
+            label: Text
+            name: '-6dbb5649'
+            widget: string
+          - hint: 'Original text: Bg color Gold, key: 7c2a69b8'
+            label: Text
+            name: 7c2a69b8
+            widget: string
+          - hint: 'Original text: #ffbf1f, key: -10ac27c4'
+            label: Text
+            name: '-10ac27c4'
+            widget: string
+          - hint: 'Original text: BG color Orange, key: -12b61a5a'
+            label: Text
+            name: '-12b61a5a'
+            widget: string
+          - hint: 'Original text: #ff6700, key: -10c0d8dc'
+            label: Text
+            name: '-10c0d8dc'
+            widget: string
+          - hint: 'Original text: Bg color white, key: bc3fdf1'
+            label: Text
+            name: bc3fdf1
+            widget: string
+          - hint: 'Original text: #fFFFFF, key: -127c47fd'
+            label: Text
+            name: '-127c47fd'
+            widget: string
+          - hint: 'Original text: Main colors, key: 17769597'
+            label: Text
+            name: '17769597'
+            widget: string
+          - hint: 'Original text: BRAND COLOR 1, key: -d27f125'
+            label: Text
+            name: '-d27f125'
+            widget: string
+          - hint: 'Original text: #3898ec, key: -6a4ed23b'
+            label: Text
+            name: '-6a4ed23b'
+            widget: string
+          - hint: 'Original text: BRAND COLOR 2, key: -d27f124'
+            label: Text
+            name: '-d27f124'
+            widget: string
+          - hint: 'Original text: #c860db, key: -1867afb0'
+            label: Text
+            name: '-1867afb0'
+            widget: string
+          - hint: 'Original text: 3 card flex grid, key: -68a7ea76'
+            label: Text
+            name: '-68a7ea76'
+            widget: string
+          - hint: 'Original text: Heading, key: -6d5fea1e'
+            label: Text
+            name: '-6d5fea1e'
+            widget: string
+          - hint: >-
+              Original text: This is some text inside of a div block., key:
+              7635fb4f
+            label: Text
+            name: 7635fb4f
+            widget: string
+          - hint: 'Original text: portfolio card grid, key: -1e7d6682'
+            label: Text
+            name: '-1e7d6682'
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse varius enim in eros elementum tristique. , key:
+              -7d05bb15
+            label: Text
+            name: '-7d05bb15'
+            widget: text
+          - hint: 'Original text: Scopri di più, key: -536e3323'
+            label: Text
+            name: '-536e3323'
+            widget: string
+          - hint: 'Original text: Centered text, key: 6da5fdf9'
+            label: Text
+            name: 6da5fdf9
+            widget: string
+          - hint: 'Original text: Classe dei contenuti centrati, key: 2e3c1a8'
+            label: Text
+            name: 2e3c1a8
+            widget: string
+          - hint: 'Original text: Buttons, key: 719b5761'
+            label: Text
+            name: 719b5761
+            widget: string
+          - hint: 'Original text: Primary CTA, key: 2f9b76b2'
+            label: Text
+            name: 2f9b76b2
+            widget: string
+          - hint: 'Original text: Components, key: 5c265f36'
+            label: Text
+            name: 5c265f36
+            widget: string
+          - hint: 'Original text: These are a few example components., key: -2b23c4ee'
+            label: Text
+            name: '-2b23c4ee'
+            widget: string
+          - hint: 'Original text: Name, key: 24eeab'
+            label: Text
+            name: 24eeab
+            widget: string
+          - hint: 'Original text: Email, key: 3ff5b7c'
+            label: Text
+            name: 3ff5b7c
+            widget: string
+          - hint: 'Original text: Message, key: -63dc6819'
+            label: Text
+            name: '-63dc6819'
+            widget: string
+          - hint: >-
+              Original text: Thank you! Your submission has been received!, key:
+              5a0ea5a1
+            label: Text
+            name: 5a0ea5a1
+            widget: string
+          - hint: >-
+              Original text: Oops! Something went wrong while submitting the
+              form, key: 14c5a3a7
+            label: Text
+            name: 14c5a3a7
+            widget: string
+          - hint: 'Original text: Tab 1, key: 4cd4246'
+            label: Text
+            name: 4cd4246
+            widget: string
+          - hint: 'Original text: Tab 2, key: 4cd4247'
+            label: Text
+            name: 4cd4247
+            widget: string
+          - hint: 'Original text: Tab 3, key: 4cd4248'
+            label: Text
+            name: 4cd4248
+            widget: string
+          - hint: >-
+              Original text: Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse varius enim in eros elementum tristique., key:
+              6f9475d5
+            label: Text
+            name: 6f9475d5
+            widget: text
+          - hint: 'Original text: Dynamic Heroes + Lottie, key: -684b3dd5'
+            label: Text
+            name: '-684b3dd5'
+            widget: string
+          - hint: 'Original text: Raccontaci del tuo progetto, key: -40a29dd6'
+            label: Text
+            name: '-40a29dd6'
+            widget: string
+          - hint: 'Original text: Join the Human Side!, key: 1fc728b2'
+            label: Text
+            name: 1fc728b2
+            widget: string
+          - hint: 'Original text: Agenzia Google Premier Partner, key: -1b974776'
+            label: Text
+            name: '-1b974776'
+            widget: string
+          - hint: 'Original text: Comunicazione Integrata, key: -5207eb29'
+            label: Text
+            name: '-5207eb29'
+            widget: string
+          - hint: 'Original text: Team, key: 27b67d'
+            label: Text
+            name: 27b67d
+            widget: string
+          - hint: 'Original text: Magazine, key: -b5f04c'
+            label: Text
+            name: '-b5f04c'
+            widget: string
+          - hint: 'Original text: Lavora con Noi, key: -4c1e3859'
+            label: Text
+            name: '-4c1e3859'
+            widget: string
+          - hint: 'Original text: La nostra Storia, key: 394d4a60'
+            label: Text
+            name: 394d4a60
+            widget: string
+          - hint: 'Original text: Press e Pubblicazioni, key: 7ff21923'
+            label: Text
+            name: 7ff21923
+            widget: string
+          - hint: 'Original text: RichAutomation™, key: -57813bb1'
+            label: Text
+            name: '-57813bb1'
+            widget: string
+          - hint: 'Original text: Rich Dashboard, key: 658f0050'
+            label: Text
+            name: 658f0050
+            widget: string
+          - hint: 'Original text: Privacy and Cookie Policy, key: 4f3d852d'
+            label: Text
+            name: 4f3d852d
+            widget: string
+          - hint: >-
+              Original text: Company No. 08815509 | VAT: GB 178622675 Agenzia
+              Digital Marketing con sede a Londra e Milano., key: 5b3e96ce
+            label: Text
+            name: 5b3e96ce
+            widget: text
+          - hint: >-
+              Original text: Biscuit Factory, J312, The, 100 Clements Rd, London
+              SE16 4DG, United Kingdom | Via Timavo, 12, 20100 Milano MI, key:
+              1048c7f6
+            label: Text
+            name: 1048c7f6
+            widget: text
+          - hint: 'Original text: Objective:, key: -498db5bf'
+            label: Text
+            name: '-498db5bf'
+            widget: string
+          - hint: 'Original text: No items found., key: 3d503d2b'
+            label: Text
+            name: 3d503d2b
+            widget: string
+          - hint: 'Original text: Categoria:, key: -3be6de79'
+            label: Text
+            name: '-3be6de79'
+            widget: string
+          - hint: 'Original text: Project name:, key: -742210d8'
+            label: Text
+            name: '-742210d8'
+            widget: string
+          - hint: 'Original text: Client name:, key: 5d03ee9a'
+            label: Text
+            name: 5d03ee9a
+            widget: string
+          - hint: 'Original text: Description:, key: -68b9b022'
+            label: Text
+            name: '-68b9b022'
+            widget: string
+          - hint: 'Original text: Client logo:, key: 5cee077a'
+            label: Text
+            name: 5cee077a
+            widget: string
+          - hint: 'Original text: Screenshots:, key: -2452d9d3'
+            label: Text
+            name: '-2452d9d3'
+            widget: string
+      - label: Links
+        name: links
+        file: cms/_data/links.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Links
+          - hint: 'Original link: #, key: 23'
+            label: Link
+            name: '23'
+            widget: string
+          - hint: >-
+              Original link: https://www.facebook.com/richclicks?fref=ts, key:
+              29171b87
+            label: Link
+            name: 29171b87
+            widget: string
+          - hint: >-
+              Original link: https://www.instagram.com/richclicksltd/, key:
+              -4453f216
+            label: Link
+            name: '-4453f216'
+            widget: string
+          - hint: 'Original link: https://twitter.com/richclicks, key: -530ecc81'
+            label: Link
+            name: '-530ecc81'
+            widget: string
+          - hint: >-
+              Original link: https://it.linkedin.com/company/rich-clicks-ltd,
+              key: 2092f8af
+            label: Link
+            name: 2092f8af
+            widget: string
+          - hint: 'Original link: http://skype:+4402071931103?call, key: -30fa6653'
+            label: Link
+            name: '-30fa6653'
+            widget: string
+          - hint: >-
+              Original link:
+              https://www.richclicks.it/rich-tools/marketing-automation, key:
+              -3bda9200
+            label: Link
+            name: '-3bda9200'
+            widget: string
+          - hint: 'Original link: /assets/rich-tools/rich-dashboard., key: -7b294fd'
+            label: Link
+            name: '-7b294fd'
+            widget: string
+      - label: Images
+        name: images
+        file: cms/_data/images.json
+        fields:
+          - label: Title
+            name: title
+            widget: hidden
+            default: Images
+          - label: Image
+            name: '-3cbca8bd'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-2104fd2c'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: '-6c6c5236'
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3e5f8afc
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 4d3a4b7c
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3f9e446b
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3fc88aee
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 40638d79
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 3ff2d171
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+          - label: Image
+            name: 405575f8
+            widget: object
+            fields:
+              - name: url
+                label: Image Url
+                widget: image
+                allow_multiple: false
+                required: false
+              - name: alt
+                label: Image Alt
+                widget: string
+                required: false
+publish_mode: editorial_workflow

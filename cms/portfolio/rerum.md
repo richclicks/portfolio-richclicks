@@ -6,16 +6,14 @@ slug: rerum
 f_client-logo:
   url: /assets/external/611a742ea43c3440dd7efb16_1629123627884-image4.jpg
   alt: null
-f_client-name: >-
-  Maxime omnis omnis dolor omnis quia ad eum id quia. Amet architecto reiciendis
-  repellat corporis ducimus incidunt inventor
+f_client-name: 'Maxime '
 f_screenshots:
   - url: /assets/external/611a742b50c7a9b640af8116_1629123626975-image9.jpg
     alt: null
   - url: /assets/external/611a742cd07bb3f0d0760284_1629123627152-image18.jpg
     alt: null
 f_featured: true
-updated-on: '2021-08-16T14:20:34.430Z'
+updated-on: '2021-08-16T15:08:37.788Z'
 f_objective:
   - cms/objectives/lead-gen.md
   - cms/objectives/brand-awareness.md
@@ -26,7 +24,7 @@ f_category:
   - cms/portfolio-categories/healthcare.md
   - cms/portfolio-categories/retail.md
   - cms/portfolio-categories/food-beverage.md
-published-on: '2021-08-16T14:31:28.222Z'
+published-on: '2021-08-16T15:13:58.035Z'
 layout: '[portfolio].html'
 tags: portfolio
 ---
