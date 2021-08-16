@@ -1,39 +1,36 @@
 ---
-f_order-priority: >-
-  Iste quia porro rem. Amet quis voluptatibus fuga quia debitis. Aperiam libero
-  nihil sed beatae nemo error ea. Distinctio nisi aut nesc
-created-on: '2021-08-16T14:20:34.366Z'
-title: Adipisci
-slug: adipisci
-f_client-logo:
-  url: /assets/external/611a742d431c0937d9cf99d5_1629123627440-image8.jpg
-  alt: null
-f_client-name: >-
-  Sit qui et quo pariatur blanditiis culpa sapiente tempore reiciendis.
-  Architecto qui dolorem molestiae consectetur perferendis ad. Ea p
+title: Adipisciiiiiii
+created-on: 2021-08-16T14:20:34.366Z
+updated-on: 2021-08-16T14:31:01.896Z
+published-on: 2021-08-16T14:31:28.222Z
+f_client-name: Sit qui et quo pariatur blanditiis culpa sapiente tempore
+  reiciendis. Architecto qui dolorem molestiae consectetur perferendis ad. Ea p
 f_screenshots:
   - url: /assets/external/611a742e5ca5eb6ebb453d77_1629123627835-image2.jpg
     alt: null
-  - url: >-
-      /assets/external/611a768501668610c36657bf_vlcsnap-2021-07-30-17h33m52s584.png
+  - url: /assets/external/611a768501668610c36657bf_vlcsnap-2021-07-30-17h33m52s584.png
     alt: null
-  - url: >-
-      /assets/external/611a769f0166866b3b6657e7_vlcsnap-2021-07-30-17h28m30s911.png
+  - url: /assets/external/611a769f0166866b3b6657e7_vlcsnap-2021-07-30-17h28m30s911.png
     alt: null
-f_featured: false
-updated-on: '2021-08-16T14:31:01.896Z'
-f_objective:
-  - cms/objectives/brand-awareness.md
-  - cms/objectives/lead-gen.md
-f_link: https://www.google.com
 f_category:
   - cms/portfolio-categories/formazione.md
   - cms/portfolio-categories/b2b.md
   - cms/portfolio-categories/altri-settori.md
   - cms/portfolio-categories/healthcare.md
-published-on: '2021-08-16T14:31:28.222Z'
-layout: '[portfolio].html'
+f_client-logo:
+  url: /assets/external/611a742d431c0937d9cf99d5_1629123627440-image8.jpg
+  alt: null
+f_objective:
+  - cms/objectives/brand-awareness.md
+  - cms/objectives/lead-gen.md
+f_link: https://www.google.com
+f_order-priority: Iste quia porro rem. Amet quis voluptatibus fuga quia debitis.
+  Aperiam libero nihil sed beatae nemo error ea. Distinctio nisi aut nesc
+f_featured: false
 tags: portfolio
+layout: "[portfolio].html"
+slug: adipisci
+date: 2021-08-16T15:33:11.235Z
 ---
 
 Quas ratione sed.
