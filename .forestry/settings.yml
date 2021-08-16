@@ -5,8 +5,23 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
-  path: cms
-  label: CMS
+  path: cms/pages
+  label: Pages
+  create: all
+  match: "**/*"
+- type: directory
+  path: cms/portfolio-categories
+  label: Categories
+  create: all
+  match: "**/*"
+- type: directory
+  path: cms/objectives
+  label: Objectives
+  create: all
+  match: "**/*"
+- type: directory
+  path: cms/portfolio
+  label: Portfolio
   create: all
   match: "**/*"
 upload_dir: uploads
